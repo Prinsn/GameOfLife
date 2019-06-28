@@ -1,4 +1,5 @@
-﻿using GameOfLife.Engines.Abstract;
+﻿using GameOfLife.Classes;
+using GameOfLife.Engines.Abstract;
 using GameOfLife.Enums;
 using GameOfLife.Extensions;
 using System;
@@ -13,7 +14,7 @@ namespace GameOfLife
     {
         private IEnumerable<int> _xIterator { get; set; }
         private IEnumerable<int> _yIterator { get; set; }
-        private static Random _random = new Random();
+
         public int Width { get; private set; }
 
         public int Height { get; private set; }        
@@ -86,7 +87,7 @@ namespace GameOfLife
         /// <returns></returns>
         public static CellState RandomState(int max = 2)
         {
-            return _random.Next(max) % max == 0 ? CellState.Alive : CellState.Dead; 
+            return Rng.Random.Next(max) % max == 0 ? CellState.Alive : CellState.Dead; 
         }
 
         /// <summary>

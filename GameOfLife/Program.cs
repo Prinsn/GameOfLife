@@ -15,7 +15,7 @@ namespace GameOfLife
             var height = 80;
 
             var soup = new Board(width, height);
-            soup.Init(Board._RandomState, new DefaultEngine<Wrapping_N_VonNeuman<N_2>>());
+            soup.Init(Board._RandomState, new DefaultestEngine());
 
             var driver = new ConsoleGame();
             driver.InitConsole(width, height);

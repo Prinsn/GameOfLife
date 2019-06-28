@@ -10,7 +10,7 @@ using GameOfLife.Classes.Interfaces;
 namespace GameOfLife.Engines
 {
 
-    public class DefaultTestEngine : DefaultEngine<WrappingMooreNeighborhood> { }
+    public class DefaultestEngine : DefaultEngine<WrappingMooreNeighborhood> { }
     public class DefaultEngine<TNeighborhood> : RuleEngine<TNeighborhood> where TNeighborhood : ICellNeighborhood, new()
     {
         public DefaultEngine() : base(new RuleList())

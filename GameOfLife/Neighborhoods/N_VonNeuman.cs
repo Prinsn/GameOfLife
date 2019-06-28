@@ -114,11 +114,21 @@ namespace GameOfLife.Neighborhoods
         }
     }    
 
+    public class NoDiag_N_VonNeuman<TDistance> : N_VonNeuman<TDistance> where TDistance : IManhattanDistance, new()
+    {
+        protected override bool _diagonals => false;
+    }
+
     public class Wrapping_N_VonNeuman<TDistance> : N_VonNeuman<TDistance> where TDistance : IManhattanDistance, new()
     {
         protected override bool _wrapping { get; } = true;
     }
 
+    public class NoDiagWrapping_N_VonNeuman<TDistance> : N_VonNeuman<TDistance> where TDistance : IManhattanDistance, new()
+    {
+        protected override bool _wrapping { get; } = true;
+        protected override bool _diagonals => false;
+    }
 
     #region Junk for simulating templates
     public interface IManhattanDistance { }
@@ -126,6 +136,8 @@ namespace GameOfLife.Neighborhoods
     public class N_1 : IManhattanDistance { }
     public class N_2 : IManhattanDistance { }
     public class N_3 : IManhattanDistance { }
+
+    //Anything below this line does not produce anything useful with default rules, will extinct in a few generations
     public class N_4 : IManhattanDistance { }
     public class N_5 : IManhattanDistance { }
     public class N_6 : IManhattanDistance { }

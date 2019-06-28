@@ -24,7 +24,7 @@ namespace Tests
         public void BoardInitialize()
         {
             var board = new Board(5, 5);
-            board.Init(() => CellState.Dead, new DefaultTestEngine());
+            board.Init(() => CellState.Dead, new DefaultestEngine());
             board.BoardIterator((x, y) => Assert.NotNull(board.State[x, y]));
         }
 
@@ -32,7 +32,7 @@ namespace Tests
         public void ToadBehavior()
         {
             var board = new Board(5, 5);
-            board.Init(() => CellState.Dead, new DefaultTestEngine());
+            board.Init(() => CellState.Dead, new DefaultestEngine());
             board.ToadAt(1, 1);
 
             var period0 = JsonConvert.SerializeObject(board.State);            

@@ -30,7 +30,7 @@ namespace GameOfLife
             NextState = Rules.GetNewState(board, this);
         }            
 
-        public void UpdateState()
+        public virtual void UpdateState()
         {
             State = NextState;
         }
