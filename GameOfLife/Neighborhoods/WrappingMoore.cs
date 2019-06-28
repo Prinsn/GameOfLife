@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GameOfLife.Classes
+namespace GameOfLife.Neighborhoods
 {
     public class WrappingMooreNeighborhood : ICellNeighborhood
     {

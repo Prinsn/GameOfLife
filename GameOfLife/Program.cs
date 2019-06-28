@@ -1,5 +1,6 @@
 ﻿using GameOfLife._Game;
 using GameOfLife.Engines;
+using GameOfLife.Neighborhoods;
 using System.Threading.Tasks;
 
 namespace GameOfLife
@@ -14,7 +15,7 @@ namespace GameOfLife
             var height = 80;
 
             var soup = new Board(width, height);
-            soup.Init(Board._RandomState, new DefaultEngine());
+            soup.Init(Board._RandomState, new DefaultEngine<Wrapping_N_VonNeuman<N_2>>());
 
             var driver = new ConsoleGame();
             driver.InitConsole(width, height);
