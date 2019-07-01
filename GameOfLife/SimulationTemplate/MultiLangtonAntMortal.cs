@@ -8,7 +8,7 @@ using GameOfLife.Neighborhoods;
 
 namespace GameOfLife.SimulationTemplate
 {
-    public class Sandbox : ISimulationTemplate
+    public class MultiLangtonAntMortal : ISimulationTemplate
     {
         public void Run()
         {
@@ -18,14 +18,13 @@ namespace GameOfLife.SimulationTemplate
             var soup = new Board(width, height);
             //var engine = new DefaultEngine<WrappingMooreNeighborhood>();
             soup.Init(() => CellState.Dead, null);
-            soup.Actors.Add(new LangtonAnt(new Coordinant(0, 0), true));
-            //soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4, height / 4), true));
-            //soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4 * 3, height / 4), true));
-            //soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4, height / 4 * 3), true));
-            //soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4 * 3, height / 4 * 3), true));
+            soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4, height / 4), true));
+            soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4 * 3, height / 4), true));
+            soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4, height / 4 * 3), true));
+            soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4 * 3, height / 4 * 3), true));
             //MortalCells
-            //var maxLife = 100;
-            //soup.BoardIterator((x, y) => soup.State[x, y] = new AbsoluteMortalCell(soup.State[x, y], maxLife));
+            var maxLife = 100;
+            soup.BoardIterator((x, y) => soup.State[x, y] = new AbsoluteMortalCell(soup.State[x, y], maxLife));
 
             var driver = new ConsoleGame();
             driver.InitConsole(width, height);

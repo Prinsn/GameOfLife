@@ -49,7 +49,7 @@ namespace GameOfLife.Classes
                 return true;
             }
 
-            if (prop > bound)
+            if (prop >= bound)
             {
                 prop -= bound;
                 return true;
@@ -83,9 +83,9 @@ namespace GameOfLife.Classes
                 return true;
             }
 
-            if (prop > bound)
+            if (prop >= bound)
             {
-                prop = bound;
+                prop = bound -1;
                 return true;
             }
 

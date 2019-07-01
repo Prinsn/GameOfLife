@@ -22,11 +22,11 @@ namespace GameOfLife.Actors
         {
             if (Wrap)
             {
-                this.Location.Wrap(board.Width - 1, board.Height - 1);
+                this.Location.Wrap(board.Width, board.Height);
             }
             else
             {
-                this.Location.Clamp(board.Width - 1, board.Height - 1);
+                this.Location.Clamp(board.Width, board.Height);
             }
 
             var cell = board.State[this.Location.X, this.Location.Y];
@@ -79,11 +79,11 @@ namespace GameOfLife.Actors
             this.NextLocation.Move(this.Facing);
             if (Wrap)
             {
-                this.NextLocation.Wrap(board.Width - 1, board.Height - 1);
+                this.NextLocation.Wrap(board.Width, board.Height);
             }
             else
             {
-                this.NextLocation.Clamp(board.Width - 1, board.Height - 1);
+                this.NextLocation.Clamp(board.Width, board.Height);
             }
 
             this.Location = this.NextLocation;

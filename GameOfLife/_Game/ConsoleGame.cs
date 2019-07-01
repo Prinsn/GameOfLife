@@ -54,7 +54,7 @@ namespace GameOfLife._Game
         /// </summary>
         /// <param name="last"></param>
         /// <param name="refreshRate">Refresh rate in miliseconds</param>
-        public void RefreshDelay(ref DateTime last, int refreshRate = 1)
+        public void RefreshDelay(ref DateTime last, int refreshRate = 10)
         {
             var now = DateTime.Now;
             var elapsed = (int)(now.Ticks - last.Ticks) / 10000;
