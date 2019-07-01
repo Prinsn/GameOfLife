@@ -13,7 +13,7 @@ namespace GameOfLife
         public CellState State { get; set; }
 
         [JsonIgnore]
-        public CellState NextState { get; private set; }
+        public CellState NextState { get; set; }
         [JsonIgnore]
         public RuleEngine Rules { get; private set; }
 
@@ -27,7 +27,7 @@ namespace GameOfLife
 
         public void BufferStateChange(Board board)
         {
-            NextState = Rules.GetNewState(board, this);
+            NextState = Rules?.GetNewState(board, this) ?? State;
         }            
 
         public virtual void UpdateState()

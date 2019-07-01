@@ -8,4 +8,9 @@ namespace GameOfLife.Enums
     {
         Dead, Alive
     }
+
+    public enum Direction
+    {
+        N, E, S, W
+    }
 }

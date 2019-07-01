@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GameOfLife.Rules
 {
-    public class RuleList : List<Func<CellState, List<Cell>, CellState?>>
+    public class CellLifeRuleList : List<Func<CellState, List<Cell>, CellState?>>
     { 
     }
 }

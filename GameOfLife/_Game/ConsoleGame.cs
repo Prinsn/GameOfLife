@@ -29,6 +29,7 @@ namespace GameOfLife._Game
         {
             Console.SetCursorPosition(0, 0);
             Console.Write(board.ToString());
+            board.Actors.ForEach(a => a.DisplayConsole(board));
         }
 
         public void InitConsole(int w, int h)
@@ -57,11 +58,6 @@ namespace GameOfLife._Game
         {
             var now = DateTime.Now;
             var elapsed = (int)(now.Ticks - last.Ticks) / 10000;
-            var ms = (int)(now.Millisecond - last.Millisecond);
-            if (elapsed < 0 || ms < 0)
-            {
-                elapsed += 0;
-            }
 
             last = now;
             if (FrameTimes.Count == _frameSampleCount)

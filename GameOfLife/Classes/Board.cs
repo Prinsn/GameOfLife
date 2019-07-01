@@ -20,6 +20,8 @@ namespace GameOfLife
         public int Height { get; private set; }        
         public Cell[,] State { get; private set; }
 
+        public List<Actor> Actors { get; private set; } = new List<Actor>();
+
         public Board(int w, int h)
         {
             Width = w;
@@ -40,10 +42,15 @@ namespace GameOfLife
                     rowTracker = y;
                 }
 
-                sb.Append(State[x, y].State == CellState.Alive ? "■" : " ");
+                sb.Append(Visualize(State[x, y].State));
             });
 
             return sb.ToString();
+        }
+
+        public string Visualize(CellState state)
+        {
+            return state == CellState.Alive ? "■" : " ";
         }
 
         public Cell[,] Init(Func<CellState> initFunc, RuleEngine rules)
@@ -68,13 +75,17 @@ namespace GameOfLife
             {
                 GetNewStates.Add(() => State[x, y].BufferStateChange(board));
                 UpdateStates.Add(() => State[x, y].UpdateState());
-            });
+            });           
 
             //Needs threadsafe dictionary
             //Parallel.ForEach(GetNewStates, foo => foo());
             //Parallel.ForEach(UpdateStates, foo => foo());
 
             GetNewStates.ForEach(z => z());
+            board.Actors.ForEach(a =>
+            {
+                a.ActOn(board);
+            });
             UpdateStates.ForEach(z => z());
         }
 

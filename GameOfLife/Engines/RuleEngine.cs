@@ -8,10 +8,10 @@ namespace GameOfLife.Engines
 {    
     public class RuleEngine<TNeighborhood> : RuleEngine where TNeighborhood : ICellNeighborhood, new()
     {
-        public RuleList Rules { get; set; }
-        public RuleEngine(RuleList rules)
+        public CellLifeRuleList Rules { get; set; }
+        public RuleEngine(CellLifeRuleList rules)
         {
-            Rules = rules;
+            Rules = rules ?? new CellLifeRuleList();
         }
 
         public override CellState GetNewState(Board board, Cell cell)

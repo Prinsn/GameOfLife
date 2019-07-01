@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameOfLife.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -17,14 +18,20 @@ namespace GameOfLife.Classes
             _y = y;
         }
 
+        public Coordinant(Coordinant from)
+        {
+            _x = from.X;
+            _y = from.Y;
+        }
+
         public bool WrapX(int bound)
         {
-            return UpdateBounds(bound, ref _x);
+            return UpdateWrap(bound, ref _x);
         }
 
         public bool WrapY(int bound)
         {
-            return UpdateBounds(bound, ref _y);
+            return UpdateWrap(bound, ref _y);
         }
 
         public bool Wrap(int xBound, int yBound)
@@ -34,7 +41,7 @@ namespace GameOfLife.Classes
             return x || y;
         }
 
-        private bool UpdateBounds(int bound, ref int prop)
+        private bool UpdateWrap(int bound, ref int prop)
         {
             if (prop < 0)
             {
@@ -49,6 +56,59 @@ namespace GameOfLife.Classes
             }
 
             return false;
+        }
+
+        public bool Clamp(int xBound, int yBound)
+        {
+            var x = ClampX(xBound);
+            var y = ClampY(yBound);
+            return x || y;
+        }
+
+        public bool ClampX(int bound)
+        {
+            return UpdateClamp(bound, ref _x);
+        }
+
+        public bool ClampY(int bound)
+        {
+            return UpdateClamp(bound, ref _y);
+        }
+
+        public bool UpdateClamp(int bound, ref int prop)
+        {
+            if (prop < 0)
+            {
+                prop = 0;
+                return true;
+            }
+
+            if (prop > bound)
+            {
+                prop = bound;
+                return true;
+            }
+
+            return false;
+        }
+
+        public void Move(Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.N:
+                    _x--;
+                    break;
+                case Direction.S:
+                    _x++;
+                    break;
+                case Direction.E:
+                    _y--;
+                    break;
+                case Direction.W:
+                    _y++;
+                    break;
+            }
         }
     }
 }

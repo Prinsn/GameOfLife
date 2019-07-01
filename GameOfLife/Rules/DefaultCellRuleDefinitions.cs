@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GameOfLife.Rules
 {
-    public static class RuleDefinitions
+    public static class DefaultCellRuleDefinitions
     {
         public static CellState? UnderPopulation(CellState currentState, List<Cell> neighbors)
         {

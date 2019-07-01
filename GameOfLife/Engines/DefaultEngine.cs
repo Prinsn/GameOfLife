@@ -13,24 +13,24 @@ namespace GameOfLife.Engines
     public class DefaultestEngine : DefaultEngine<WrappingMooreNeighborhood> { }
     public class DefaultEngine<TNeighborhood> : RuleEngine<TNeighborhood> where TNeighborhood : ICellNeighborhood, new()
     {
-        public DefaultEngine() : base(new RuleList())
+        public DefaultEngine() : base(new CellLifeRuleList())
         {
             init();
         }
 
-        public DefaultEngine(RuleList rules) : base(new RuleList())
+        public DefaultEngine(CellLifeRuleList rules) : base(new CellLifeRuleList())
         {
             init();
         }
 
         private void init()
         {
-            Rules.AddRange(new RuleList
+            Rules.AddRange(new CellLifeRuleList
             {
-                RuleDefinitions.UnderPopulation,
-                RuleDefinitions.GoodPopulation,
-                RuleDefinitions.OverPopulation,
-                RuleDefinitions.Reproduction
+                DefaultCellRuleDefinitions.UnderPopulation,
+                DefaultCellRuleDefinitions.GoodPopulation,
+                DefaultCellRuleDefinitions.OverPopulation,
+                DefaultCellRuleDefinitions.Reproduction
             });
         }
     }
