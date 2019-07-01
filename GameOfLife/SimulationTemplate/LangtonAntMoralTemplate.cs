@@ -8,7 +8,7 @@ using GameOfLife.Neighborhoods;
 
 namespace GameOfLife.SimulationTemplate
 {
-    public class Sandbox : ISimulationTemplate
+    class LangtonAntMoralTemplate : ISimulationTemplate
     {
         public void Run()
         {
@@ -18,10 +18,7 @@ namespace GameOfLife.SimulationTemplate
             var soup = new Board(width, height);
             //var engine = new DefaultEngine<WrappingMooreNeighborhood>();
             soup.Init(() => CellState.Dead, null);
-            soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4, height / 4), true));
-            soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4 * 3, height / 4), true));
-            soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4, height / 4 * 3), true));
-            soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4 * 3, height / 4 * 3), true));
+            soup.Actors.Add(new LangtonAnt(new Coordinant(width / 2, height / 2), true));
             //MortalCells
             var maxLife = 100;
             soup.BoardIterator((x, y) => soup.State[x, y] = new AbsoluteMortalCell(soup.State[x, y], maxLife));

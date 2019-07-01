@@ -79,12 +79,13 @@ namespace GameOfLife.Actors
             this.NextLocation.Move(this.Facing);
             if (Wrap)
             {
-                this.Location.Wrap(board.Width - 1, board.Height - 1);
+                this.NextLocation.Wrap(board.Width - 1, board.Height - 1);
             }
             else
             {
-                this.Location.Clamp(board.Width - 1, board.Height - 1);
+                this.NextLocation.Clamp(board.Width - 1, board.Height - 1);
             }
+
             this.Location = this.NextLocation;
         }
     }
