@@ -1,10 +1,11 @@
-﻿using GameOfLife._Game;
-using GameOfLife.Actors;
-using GameOfLife.Classes;
-using GameOfLife.Engines;
-using GameOfLife.Enums;
-using GameOfLife.Interfaces;
-using GameOfLife.Neighborhoods;
+﻿using GameOfLife.Core._Game;
+using GameOfLife.Core.Actors;
+using GameOfLife.Core.Classes;
+using GameOfLife.Core.Engines;
+using GameOfLife.Core.Enums;
+using GameOfLife.Core.Interfaces;
+using GameOfLife.Core.Neighborhoods;
+using GameOfLife.Templates;
 
 namespace GameOfLife.SimulationTemplate
 {
@@ -16,16 +17,28 @@ namespace GameOfLife.SimulationTemplate
             var height = 80;
 
             var soup = new Board(width, height);
-            //var engine = new DefaultEngine<WrappingMooreNeighborhood>();
-            soup.Init(() => CellState.Dead, null);
-            soup.Actors.Add(new LangtonAnt(new Coordinant(0, 0), true));
-            //soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4, height / 4), true));
-            //soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4 * 3, height / 4), true));
-            //soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4, height / 4 * 3), true));
-            //soup.Actors.Add(new LangtonAnt(new Coordinant(width / 4 * 3, height / 4 * 3), true));
-            //MortalCells
-            //var maxLife = 100;
-            //soup.BoardIterator((x, y) => soup.State[x, y] = new AbsoluteMortalCell(soup.State[x, y], maxLife));
+            var engine = new DefaultEngine<WrappingMooreNeighborhood>();
+            soup.Init(() => CellState.Dead, engine);
+
+            soup.GliderAt(2, 10);
+            soup.GliderAt(2, 30);
+            soup.GliderAt(2, 50);
+            soup.GliderAt(2, 70);
+
+            soup.GliderAt(70, 5, true, false);
+            soup.GliderAt(70, 25, true, false);
+            soup.GliderAt(70, 55, true, false);
+            soup.GliderAt(70, 65, true, false);
+
+            soup.GliderAt(30, 30, false, false);
+            soup.GliderAt(40, 40, false, false);
+            soup.GliderAt(50, 50, false, false);
+            soup.GliderAt(60, 60, false, false);
+
+            soup.GliderAt(30, 60, false, true);
+            soup.GliderAt(40, 50, false, true);
+            soup.GliderAt(50, 40, false, true);
+            soup.GliderAt(60, 30, false, true);
 
             var driver = new ConsoleGame();
             driver.InitConsole(width, height);

@@ -1,8 +1,8 @@
-﻿using GameOfLife._Game;
-using GameOfLife.Classes;
-using GameOfLife.Engines;
-using GameOfLife.Interfaces;
-using GameOfLife.Neighborhoods;
+﻿using GameOfLife.Core._Game;
+using GameOfLife.Core.Classes;
+using GameOfLife.Core.Engines;
+using GameOfLife.Core.Interfaces;
+using GameOfLife.Core.Neighborhoods;
 using System;
 using System.Collections.Generic;
 using System.Text;

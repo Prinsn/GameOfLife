@@ -1,8 +1,8 @@
 using GameOfLife;
-using GameOfLife.Classes;
-using GameOfLife.Engines;
-using GameOfLife.Enums;
-using GameOfLife.Neighborhoods;
+using GameOfLife.Core.Classes;
+using GameOfLife.Core.Engines;
+using GameOfLife.Core.Enums;
+using GameOfLife.Core.Neighborhoods;
 using GameOfLife.Templates;
 using Newtonsoft.Json;
 using NUnit.Framework;

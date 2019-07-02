@@ -1,8 +1,8 @@
-﻿using GameOfLife._Game;
-using GameOfLife.Actors;
-using GameOfLife.Classes;
-using GameOfLife.Enums;
-using GameOfLife.Interfaces;
+﻿using GameOfLife.Core._Game;
+using GameOfLife.Core.Actors;
+using GameOfLife.Core.Classes;
+using GameOfLife.Core.Enums;
+using GameOfLife.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;

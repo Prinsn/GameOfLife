@@ -1,6 +1,6 @@
-﻿using GameOfLife._Game;
-using GameOfLife.Engines;
-using GameOfLife.Interfaces;
+﻿using GameOfLife.Core._Game;
+using GameOfLife.Core.Engines;
+using GameOfLife.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;

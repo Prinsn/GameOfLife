@@ -1,10 +1,10 @@
-﻿using GameOfLife._Game;
-using GameOfLife.Actors;
-using GameOfLife.Classes;
-using GameOfLife.Engines;
-using GameOfLife.Enums;
-using GameOfLife.Interfaces;
-using GameOfLife.Neighborhoods;
+﻿using GameOfLife.Core._Game;
+using GameOfLife.Core.Actors;
+using GameOfLife.Core.Classes;
+using GameOfLife.Core.Engines;
+using GameOfLife.Core.Enums;
+using GameOfLife.Core.Interfaces;
+using GameOfLife.Core.Neighborhoods;
 
 namespace GameOfLife.SimulationTemplate
 {
