@@ -1,8 +1,8 @@
 using GameOfLife;
-using GameOfLife.Classes;
-using GameOfLife.Engines;
-using GameOfLife.Enums;
-using GameOfLife.Neighborhoods;
+using GameOfLife.Core.Classes;
+using GameOfLife.Core.Engines;
+using GameOfLife.Core.Enums;
+using GameOfLife.Core.Neighborhoods;
 using GameOfLife.Templates;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -42,11 +42,8 @@ namespace Tests
             var period2 = JsonConvert.SerializeObject(board.State);
 
             //Two period oscilator
-            Assert.AreEqual(period0, period1);
+            Assert.AreNotEqual(period0, period1);
             Assert.AreEqual(period0, period2);
-
-            //This test passes but the program didn't work
-            Assert.IsTrue(false);
         }
 
         [Test]
@@ -76,13 +73,15 @@ namespace Tests
         [Test]
         public void VonNeumanWrapTest()
         {
+            var width_0 = 4;
+            var height_0 = 4;
             var wvn = new Wrapping_N_VonNeuman<N_2>();
             var testList = new List<Coordinant>()
             {
                 new Coordinant(0, 0),
-                new Coordinant(0, 4),
-                new Coordinant(4, 0),
-                new Coordinant(4, 4)
+                new Coordinant(0, height_0),
+                new Coordinant(width_0, 0),
+                new Coordinant(width_0, height_0)
             };
 
 
@@ -91,15 +90,17 @@ namespace Tests
                 var wrapped = 0;
                 var coords = wvn.GetNeighborCoords(coord);
                 var expectedWrap = coords.Count - 6;
-
+#if DEBUG
+                var humanReadable1 = coords.Select(z => $"{z.X} , {z.Y}").ToList();
+#endif
                 coords.ForEach(c =>
                 {
-                    if (c.Wrap(4, 4))
+                    if (c.Wrap(width_0+1, height_0+1))
                         ++wrapped;
                 });
 
 #if DEBUG
-                var humanReadable = coords.Select(z => $"{z.X} , {z.Y}").ToList();
+                var humanReadable2 = coords.Select(z => $"{z.X} , {z.Y}").ToList();
 #endif
 
                 //All but 5 should be wrapped, 6 -1 as the origin point isn't counted

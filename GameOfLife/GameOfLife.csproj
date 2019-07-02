@@ -9,4 +9,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GameOfLife.Core\GameOfLife.Core.csproj" />
+    <ProjectReference Include="..\GameOfLife.Templates\GameOfLife.Templates.csproj" />
+  </ItemGroup>
+
 </Project>

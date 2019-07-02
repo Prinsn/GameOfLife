@@ -1,15 +1,14 @@
 ﻿using GameOfLife.Core._Game;
+using GameOfLife.Core.Actors;
 using GameOfLife.Core.Classes;
 using GameOfLife.Core.Engines;
+using GameOfLife.Core.Enums;
 using GameOfLife.Core.Interfaces;
 using GameOfLife.Core.Neighborhoods;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GameOfLife.SimulationTemplate
 {
-    public class MortalWrappingVonNeuman : ISimulationTemplate
+    class LangtonAntMoralTemplate : ISimulationTemplate
     {
         public void Run()
         {
@@ -17,11 +16,11 @@ namespace GameOfLife.SimulationTemplate
             var height = 80;
 
             var soup = new Board(width, height);
-            var engine = new DefaultEngine<NoDiag_N_VonNeuman<N_3>>();
-            soup.Init(Board._RandomState, engine);
-
+            //var engine = new DefaultEngine<WrappingMooreNeighborhood>();
+            soup.Init(() => CellState.Dead, null);
+            soup.Actors.Add(new LangtonAnt(new Coordinant(width / 2, height / 2), true));
             //MortalCells
-            var maxLife = 4;
+            var maxLife = 100;
             soup.BoardIterator((x, y) => soup.State[x, y] = new AbsoluteMortalCell(soup.State[x, y], maxLife));
 
             var driver = new ConsoleGame();

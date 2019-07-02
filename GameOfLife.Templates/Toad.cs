@@ -1,4 +1,4 @@
-﻿using GameOfLife.Enums;
+﻿using GameOfLife.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
