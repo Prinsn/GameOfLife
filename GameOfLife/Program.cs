@@ -6,7 +6,7 @@ namespace GameOfLife
     {
         static void Main(string[] args)
         {
-            new Sandbox().Run();
+            new GosperGliderGunTemplate().Run();
         }        
     }
 }
